@@ -1,0 +1,103 @@
+**spring lesson note**
+
+주요 목차 ( spring 1차 프로젝트 전까지 ) 
+- Maven 
+- Git 형상관리 
+- Spring 관련 용어 정리 
+- IOC / DI  설정 스타일 
+  1) xml 
+  2) Annotation
+  3) Java Confing
+ - SpringBoot 소개 및  CommandLineRunner 
+ 
+ - AOP 
+ - MyBatis Framework 
+ - SprigngMVC (Legacy)
+ - SpringBoot Web 
+ - JUnit , Logging
+ - Thymeleaf
+ - Ajax/JSON 
+ - CSS Framework : Bootstrap 
+ - Agile Scrum : Jira
+ -------------------------------
+ 
+ - Spring 관련 용어 정리 
+ 
+ library : 라이브러리 , 재사용 가능한 프로그램들의 모음
+ jar : 자바 프로그램 압축 확장자 ( springboot application 을 build )
+ war : 자바 웹어플리케이션 확장자 
+ component : 독립적 기능단위를 가진 부품 ( 부품화되는 요소를 컴포넌트라고 함 ) 
+ 			 Bean => 자바 컴포넌트 , 스프링에서 관리하는 컴포넌트(객체)를 Bean이라고 한다
+ API : Application Programming Interface 응용 프로그램을 개발하기 위해 제공하는 
+ 	   인터페이스 
+ Framework : 사전적 의미는 틀 , 
+             frame( 틀 ) + work ( 일 ) => 일을 잘되게 하기 위해 제공하는 틀  
+             반완전한 어플리케이션 -> 가능한 모든 요소를 지원하여 비즈니스에 집중하도록 함 
+ Spring Framework : 자바 어플리케이션의 설계, 구현 , 테스트 , 운영에 대한 
+                    Infrastructure 기반을 제공한다 
+                    다양한 컴포넌트 및 재사용 가능한 라이브러리와 디자인 패턴을 제공한다
+                    IOC/DI, AOP, SpringMVC, Data Access 를 위한 MyBatis , JPA 
+                    , 신속한 설정과 개발을 위한 Spring Boot , 
+                    단위 테스트를 위한 JUnit ,  보안을 위한 Spring Security, 
+                    MSA 를 위한 Spring Cloud 등을 기술을 지원한다 
+                    
+ Maven  :  프로젝트 관리 도구 
+ 핵심 역할 
+ 1. 의존성 관리 (Dependency Management)와 2. 빌드 자동화 (Build Automation)                 
+    필요 라이브러리를 일괄적으로 관리                 프로젝트 완료 후 배포 deploy 를 위해 jar or war 로 build 한다 
+                     
+ **IOC 와 DL/DI**                   
+                    
+   - IOC 개념 : Inversion Of Control  , 역 제어 , 제어의 역전  => 소프트웨어 설계 원리이자 디자인 패터ㄴ 
+   					  객체 or Component or Bean 제어를 IOC Container에 위임 
+   					  다시 말하면 필요시 객체를 생성하는 것이 아니라 IOC Container로부터 필요한 객체를 받아오는 구조 
+   					  Why ?  Loose Coupling  느슨한 결합도 : 결합도란 모듈간의 상호 의존도, 결합도가 느슨해지면  확장성, 
+   					  유지보수성 향상됨     
+   - DI 개념 :  Dependecy Injection , 의존성 주입 => 디자인 패턴 
+                     필요로 하는 의존성(Dependency: bean or component) 을 주입 Injection 을 통해 확보 
+                     IOC 를 DI 기법을 통해 실현한다  
+                          
+     - DL 개념 :  Dependecy Lookup , 의존성 검색 => 디자인 패턴 
+                     필요로 하는 의존성(Dependency: bean or component) 을 검색 Lookup 을 통해 확보 
+                     IOC 를 DL 기법을 통해 실현한다                         
+               					               
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                                 	
+  
+   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

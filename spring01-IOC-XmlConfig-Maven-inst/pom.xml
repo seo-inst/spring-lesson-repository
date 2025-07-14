@@ -1,0 +1,29 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.kosa</groupId>
+  <artifactId>spring01-IOC-XmlConfig-Maven-inst</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>spring01-IOC-Maven-inst</name>
+  <description>Maven 과 Spring IOC 를 학습하는 예제입니다 </description>
+  <!-- jdk 1.8 에서 jdk 21로 수정, 인코딩 설정 추가  -->
+<properties>
+		<java.version>21</java.version>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+</properties>
+<dependencies>
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>6.2.7</version>
+</dependency>
+</dependencies>
+</project>
+
+
+
+
+
