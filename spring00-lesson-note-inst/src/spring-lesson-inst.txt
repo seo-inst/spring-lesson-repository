@@ -61,6 +61,114 @@
                      필요로 하는 의존성(Dependency: bean or component) 을 검색 Lookup 을 통해 확보 
                      IOC 를 DL 기법을 통해 실현한다                         
                					               
+   **Spring 설정 방식**
+   XML, Annotation , Java Config , properties 등이 있다. 
+   XML + Annottion 조합 또는 Annotation + Java Config 또는  XML + Annotation + Java Config + properties 로 
+   다양하게 조합될 수 있다 
+   
+   **Spring Annotation Config**
+   -컴포넌트 계열 애너테이션 : 스프링 컨테이너에게 해당 클래스가 bean 생성 대상임을 알리는 애너테이션 
+   											 Bean으로 생성되고 라이프 사이클 관리 및 싱글톤으로 운영됨 
+   @Component :  컴포넌트 계열 상위 타입, 일반 컴포넌트 클래스에 명시 , bean 으로 생성 관리 
+   컴포넌트 계열 하위 어노테이션 
+   @Controller : MVC 중 Controller ( RestController )  영역 Bean 에 명시 
+   @Service : Business 또는 Service Layer에 명시 
+   @Repository : Data Access Object 또는 Persistence Layer 에 명시 
+   
+   -설정 애너테이션 
+   @Configuration : 해당 클래스가 Spring 설정 클래스임을 Spring Container에게 알리는 애너테이션 
+   @Bean 애너테이션 :  @Configuration 이 명시된 클래스 내부의 메서드에 사용하는 애너테이션 
+	메서드의 리턴값을 Bean 으로 생성해 관리 , 주로 외부 라이브러리에 의한 객체를 Bean 으로 생성 관리할 때 사용 
+   
+   @ComponentScan(base package) : 지정한 base package 와 그 하위의 모든 패키지들의 클래스들을 스캔해서 
+   														bean 생성과  DI 을 실행한다  
+   
+   - DI (Dependency Injection) 관련 애너테이션 
+    @Autowired : 의존성 or Bean or Component or 필요객체 를  타입으로 검색해 
+    					  주입 ( field, method , constructor 다 가능 ) 
+    @Qualifier(bean name ) : 만약 동일한 타입의 객체bean 들이 여러개일 경우 
+    									   직접 bean name을 명시해서 주입 받을 수 있다 
+    그 외 @Resource , @Inject 등의 DI 관련 애너테이션이 있다 
+    
+    **DI :  생성자 Constructor 를 통한 DI 를 권장한다 **
+     final field 에  Constructor 를 통한 DI 를 권장하고 현업에서 주로 이렇게 사용한다 
+     ex)   
+       @Controller
+       public class MemberController{ 
+       private final MemberService memberService; 
+           @Autowired  // 생략 가능  : 스프링 컨테이너가 의존성 주입 DI  를 자동으로 해준다 
+           public MemberController(MemberService memberService){
+           		this.memberService = memberService
+           }	
+       }
+       **final field 와 Constructor 를 통한 DI를 권장하는 이유**
+       - 의존성 또는 Bean 또는 객체의 불변성 보장 
+         final field ( final 인스턴스 변수( 상수화 ) ) 는 생성자로 초기화 될 수 있음 
+         불변성은 멀티 스레딩시 안전 
+       - 의존성 확보가 보장된다. NPE(NullPointerException) 을 사전에 방지할 수 있다 
+          참고로 Constructor Injection 이 아닌 field Injection 또는 setter Injection 은 
+          의존성 (필요로 하는 객체)을 주입하지 않아도 객체 생성이 가능 
+          -> Constructor Injection 은 필요로 하는 bean or 객체 or 의존성을 반드시 주입해야
+          해당 객체가 생성 가능하다 => 확실한 의존성 주입을 보장 
+          * Spring IOC 컨테이너의 자동 DI (의존성 주입 기준) 
+            ===> Spring 4.3 버전 이상 ( 2025.7. 기준 Spring 6 버전 ) 부터 지원 
+                   단일 생성자 (매개변수 여러개 가능) 에 한해 자동 주입 ( @ Autowired 생략 가능 ) 
+                   만약 생성자가 여러 개일 경우에는 DI 관련 Annotation 을 명시해야 한다 
+                   
+                   
+  **Spring Bean LifeCycle**                 
+   Bean : 스프링 컨테이너가 관리하는 객체(컴포넌트)
+   
+   Spring Container 실행(설정 로딩) -> Bean 생성 & DI 
+   -> 초기화 콜백 (init callback)   : @PostConstruct 생성 후 초기화 작업 
+   -> 서비스 : Bean 의 기능 실행 
+   -> 소멸 콜백 ( destroy callback ) : @PreDestroy : 소멸 직전 실행되는 작업 
+   -> 종료 
+   
+   
+   
+   
+                
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+    									   					  
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
                     
                     
                     
