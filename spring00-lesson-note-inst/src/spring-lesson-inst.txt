@@ -172,6 +172,73 @@
    			}
    }
    
+   **AOP**
+   Aspect Oriented Programming  관점 지향 프로그래밍 
+   Aspect -> 관점   :  Core Concern 핵심 관심사 + Cross Cutting Concern 횡단관심사 or  공통관심사 
+   시스템을 핵심관심사 와 공통 관심사로 구분해 분석,설계,구현,테스트,운영 한다 
+   AOP 목적은 공통적, 반복적인 작업을 피하고 효과적으로 개발하고 유지보수하기 위함 
+   
+   "AOP는 OOP를 더욱 OOP 답게 한다"
+   
+   Core Concern 핵심 관심사  : 시스템 업무 목적에 해당하는 주요 로직 ( ex - 회원관리 ,결제  .. ) 
+   Cross Cutting Concern 횡단 관심사 : 시스템  여러 부분에 걸쳐 적용되는 공통 로직 
+   															( ex - 로깅 , 트랜잭션 , 보안 , 성능 체크 등 ) 
+   
+   - AOP  동작원리 
+   Proxy Design Pattern :  Proxy 는 대리인을 의미 
+   Proxy 를 이용해 특정 로직 수행을 대행하는 디자인 패턴 
+   사용하는 측과 서비스를 제공하는 측의 매개자로서 Proxy 객체가 역할 담당 
+   ( ex :  아이유 팬들 <---> 아이유 매니저들(Proxy) <---> 아이유(core) ) 
+   
+   - spring 09 AOP 예제 통해 확인 
+   AOP 는 IOC(DI,DL) 를 전제로 이루어진다 
+   Spring IOC Container 가 AOP 적용 될 때  실제 구현체(ex - MemberServiceImpl )
+   가 아니라  실제 구현체의 참조를 가지고 있는 Proxy(대리인) 객체를 
+   DI 의존성 주입 시킨다. 이를 통해 사용하는 측은  실제 구현체로 인식하며
+   비즈니스 메서드를 호출하고 중간 매개자인 Proxy 가 AOP 설정에 따라 
+   메서드 실행전, 실행후, 특정예외발생시 등의 상황에 Cross Cutting Concern 공통 기능
+   로직을 실행하고 Core 로직을 실행한다 
+   
+   - AOP 관련 주요 키워드 
+     Aspect : Cross Cutting Concern 로직 정의 클래스 
+     PointCut : aop 적용 대상을 지정 
+     Advice : aop 적용 시점 ( Before 메서드 실행전 , After Returning 메서드 정상 수행 후, 
+      After throwing 특정 예외 발생시 , After 예외 발생여부와 관계없이 메서드 실행 후 항상 , 
+      Around  앞의 4가지 advice를 모두 포함 )  	
+     									
+  **로깅** 
+  로깅 시스템 :   시스템 동작에 관한 정보를 제공하는 기록 
+  주로 시스템 실행 정보 및 성능, 에러에 대한 정보를 저장, 제공 
+  ( 주로 파일 및 콘솔에 로깅 )  
+  참고 ) System.out.println() -> 개발 및 운영에 관한 로그 레벨 지정 불가능하고
+          파일과 같은 외부에 저장할 수도 없음 
+   자바 진영에서 대표적 로깅 프레임워크는 Logback , Log4j2 가 있음 
+   스프링 부트에서는 Logback 이 기본 내장되어 있음 
+   -  SLF4J : Simple Logging Facade For Java   (Facade 겉면 , 소통부) 
+      다양한 로깅 프레임워크 구현체들을 표준화하는 인터페이스 역할 
+   	  이후 로깅 구현체를 변경해도 별도의 수정 없도록 캡슐화하는 역할을 함
+   -  로깅 프레임워크 특징 
+      설정 정보로 패키지별 레벨 설정이 가능 
+      지정한 레벨 등급 이상의 로그만 기록, 저장하는 방식 
+      용량설정 , 실행시 설정 변경 등 다양한 기능을 제공 
+      
+   - 로그 레벨 ( log level ) : 만약  INFO 로 지정하면 INFO,WARN,ERROR 실행됨
+      ERROR
+      WARN
+      INFO
+      DEBUG
+      TRACE   	  
+   	  					
+   
+   
+   
+   
+           
+   
+   
+   
+   
+   
    
    
    
