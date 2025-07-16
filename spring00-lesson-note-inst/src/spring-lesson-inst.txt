@@ -8,13 +8,12 @@
   1) xml 
   2) Annotation
   3) Java Confing
- - SpringBoot 소개 및  CommandLineRunner 
- 
- - AOP 
+ - SpringBoot 소개 및  CommandLineRunner  
+ - AOP , Logging
  - MyBatis Framework 
  - SprigngMVC (Legacy)
  - SpringBoot Web 
- - JUnit , Logging
+ - JUnit 
  - Thymeleaf
  - Ajax/JSON 
  - CSS Framework : Bootstrap 
@@ -125,9 +124,84 @@
    -> 소멸 콜백 ( destroy callback ) : @PreDestroy : 소멸 직전 실행되는 작업 
    -> 종료 
    
+   ***Spring Boot***
+   스프링 부트는 스프링의 하위 프로젝트 
+   "단독으로 빠르게 개발 가능한 스프링 프로젝트"
+   자동 설정 ,  웹컨테이너 내장 등을 지원한다 
+   
+   * COC : Convention Over Configuration   설정을 넘어 관례로 
+      SpringBoot 상에서는 관례적 설정들이 자동 지원 
+  
+  **SpringBoot의 설정**
+      
+  @SpringBootApplication : 스프링 부트의 설정 애너테이션 
+  :  1. 설정 정보 2. Bean 생성, DI 3. 자동 설정 지원 
+  => 다음 세가지의 기능을 합니다 
+  1. @SpringBootConfiguration ==> @Configuration :  이 클래스는 스프링 설정 클래스입니다      
+         @Bean 을 이용해  외부 라이브러리 ( ex : DBCP ) 를 사용할 수 있도록 spring bean 생성 ,관리
+  2. @ComponentScan(base package) ==> 지정한 패키지와 패키지 하위의 모든 클래스들을 
+  															   스캔해서 bean 생성  , DI 처리 
+  3. @EnableAutoConfiguration ==> 필요한 설정들을 자동으로 해줘 															          
+                
+  **SpringBoot의 CommandLineRunner**
+   CommandLineRunner 커맨드라인러너란 
+   SpringBoot 어플리케이션이 완전히 준비되면 
+   CommandLineRunner가 자동으로 작동되어 
+   우리가 정의한 로직이 수행됨 
+   
+   why?  배치작업 , 초기 데이터 설정 , 캐쉬 작업 , 헬스 체크 : DB 연결 확인 , 외부 API 상태 확인
+   			 학습 예제용도로도 적합 
+   
+   스프링 부트의 기본 구성 
+   @SpringBootApplication 
+   public class MyApplication {
+   			public static void main(String [] args){
+   				SpringApplication.run(MyApplication.class,args);
+   			}
+   }
+   스프링 부트의 기본 구성 + CommandLineRunner 
+   @SpringBootApplication 
+   public class MyApplication implements CommandLineRunner{
+   			public static void main(String [] args){
+   				SpringApplication.run(MyApplication.class,args);
+   			}
+   			@Override
+   			public void run(String ...args) throws Exception{
+   				// 커맨드라인 러너의 실행 내용 
+   				// 배치 , 헬스 체크 등 .. .
+   			}
+   }
    
    
    
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   			 
+                  
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                    
                    
