@@ -1,0 +1,65 @@
+요구사항
+
+기존 회원 서비스 및 게시판 서비스의 시스템 성능을 체크 
+각 서비스를 제공하는 메서드 들의 실행 소요시간을 로그 레벨별로 체크해서
+리포트를 제공해야 한다 ->  로그 정보를 파일에 기록 
+
+로깅 조건은  메서드 총 소요 시간이 0.5초 이상  1초 미만일 경우 
+core className  methodName  소요시간   warn level 로 로깅
+1초 이상일 경우 
+core className  methodName  소요시간   error level 로 로깅
+
+개발 단계 
+1.  로깅 테스트 
+	 org.kosa.myproject.PerformanceCheckRunner  : CommandLineRunner 를 implements 해서 
+	 logger.debug() 정보가  report.log 파일에 로깅되는 지를 확인한다 
+	 1)  application.properties : logging 설정 
+	 2)  CommandLineRunner 구현  PerformanceCheckRunner class 와 logging 처리  
+
+2.  실행 소요 시간을 측정하는 프로그램 단위 테스트 
+	  1) Spring 의 StopWatch 유틸리티 클래스 
+	      단위 테스트 
+	  	
+3.  각 메서드에 적용하는 것이 아니라(많은 중복 코드가 발생, 생산성 떨어지고 유지 관리 어려움) ===>  AOP 를 도입 
+	  AOP
+	  1) Aspect :  Cross Cutting Concern 횡단 관심사 로직을 정의 
+	  					class Name:     org.kosa.myproject.aop.PerformanceReportAspect   
+	  					method Name:  checkTimeLogging() 	  					
+	                    => 실행 소요 시간 측정 , 레벨별 로깅 
+	                    로깅 조건은  메서드 총 소요 시간이 0.5초 이상  1초 미만일 경우 
+						core className  methodName  소요시간   warn level 로 로깅
+						1초 이상일 경우 
+						core className  methodName  소요시간   error level 로 로깅
+						
+	  2) PointCut(AOP 적용대상) 과 Advice(AOP 적용시점) 를 적절히 지정 
+	      @Around("execution(public * org.kosa.myproject.model..*Service.*(..))")       
+           Around Advice :  메서드 실행전 Before advice : StopWatch start 
+           				             메서드 실행후 (예외여부와 관계없이)  After advice : StopWatch stop 
+           				             소요시간별로 파일에 로깅 
+           public :  접근제어자
+           * : 리턴타입
+          org.kosa.myproject.model.. : 해당 패키지의 하위 모든 패키지를 대상 
+          *Service :  Service 로 끝나는 인터페이스 및 클래스 
+          * : 모든 메서드 
+          (..) : 메서드 매개변수 0~*   
+
+   실행 결과 확인 :  report.log  에  실행시   warn 2 개 로깅,  error 1개 로딩 
+   							로깅 시에  해당  클래스명, 메서드명  실행소요시간 707  가 포함되어야 함 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
