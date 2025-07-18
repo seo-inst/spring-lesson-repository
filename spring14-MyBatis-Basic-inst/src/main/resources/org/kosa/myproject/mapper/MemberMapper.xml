@@ -14,6 +14,14 @@
 	<select id="findAllMemberList" resultType="org.kosa.myproject.domain.Member">
 		select id,password,name,address from spring_member
 	</select>
+	<update id="updateMember" parameterType="org.kosa.myproject.domain.Member">
+		update spring_member set 
+		password=#{password},name=#{name},address=#{address}
+		where id=#{id}
+	</update>
+	<delete id="deleteMember" parameterType="string">
+		delete from spring_member where id=#{id}
+	</delete>
 </mapper>
 
 

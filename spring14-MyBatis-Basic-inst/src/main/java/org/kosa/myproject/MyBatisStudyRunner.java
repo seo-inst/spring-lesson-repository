@@ -1,9 +1,6 @@
 package org.kosa.myproject;
 
 
-import java.util.List;
-
-import org.kosa.myproject.domain.Member;
 import org.kosa.myproject.mapper.MemberMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -31,9 +28,24 @@ public class MyBatisStudyRunner implements CommandLineRunner {
 	//	System.out.println(member);// 회원정보 toString 이 출력 : 이강인 정보가 출력 
 		
 		// select List test
-		 List<Member> list=memberMapper.findAllMemberList();
-		 for(Member m:list)
-			 System.out.println(m);
+//		 List<Member> list=memberMapper.findAllMemberList();
+//		 for(Member m:list)
+//			 System.out.println(m);
+		
+		// update member 
+//		System.out.println("수정전:"+memberMapper.findMemberById("mybatis"));
+//		Member paramVo = new Member("mybatis","b","황희찬","울버햄튼");
+//		// id 가  mybatis 인 회원의 password 와 name 과 address 를 수정한다 
+//		int updateResult = memberMapper.updateMember(paramVo);
+//		System.out.println("회원정보 수정:"+updateResult);
+//		System.out.println("수정후:"+memberMapper.findMemberById("mybatis"));
+		
+		// delete member
+		String id = "mybatis";
+		System.out.println(memberMapper.findMemberById(id));// 황희찬 회원 조회됨 
+		int deleteResult = memberMapper.deleteMember(id);
+		System.out.println("삭제:"+deleteResult);// 삭제 1 
+		System.out.println(memberMapper.findMemberById(id));// null 
 	}
 }
 

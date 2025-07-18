@@ -11,4 +11,6 @@ public interface MemberMapper {
 	int register(Member member);
 	Member findMemberById(String id);
 	List<Member> findAllMemberList();
+	int updateMember(Member paramVo);
+	int deleteMember(String id);
 }
