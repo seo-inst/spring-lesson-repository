@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kosa.myproject.mapper.ProductMapper">
+	<sql id="productColumns">
+		product_id, product_name,maker,price,created_at
+	</sql>	
+	<select id="getTotalProductCount" resultType="int">
+	select count(*) from spring_product
+	</select>
+	<select id="findAllProductList" resultType="org.kosa.myproject.domain.Product">
+	select <include refid="productColumns" /> 
+	from spring_product
+	</select>
+	<select id="findProductById" parameterType="Long">
+	select <include refid="productColumns"></include>
+	from spring_product
+	where product_id=#{productId}
+	</select>
+	<update id="updateProduct" parameterType="org.kosa.myproject.domain.Product">
+	update spring_product
+	set product_name = #{productName},
+	maker = #{maker},
+	price = #{price}
+	where product_id=#{productId}
+	</update>
+	<!-- 
+				useGeneratedKeys="true"  데이터베이스에서 자동 생성된 키를 사용하도록 설정 
+				keyProperty="productId"   자동 생성된 키를 객체의 어떤 필드에 저장할지 지정 ( 객체의 인스턴스 변수 이름 ) 
+	 -->
+	<insert id="registerProduct" parameterType="org.kosa.myproject.domain.Product" 
+	useGeneratedKeys="true" keyProperty="productId">
+		insert into spring_product(product_name,maker,price)
+		values(#{productName},#{maker},#{price})
+	</insert>
+	<select id="findByPriceRange" resultType="org.kosa.myproject.domain.Product" parameterType="bigdecimal">
+		select <include refid="productColumns"></include>
+		from spring_product
+		where price between #{minPrice}  and #{maxPrice}
+	</select>
+	<!-- 
+				다음주에 계속 
+	 -->
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
