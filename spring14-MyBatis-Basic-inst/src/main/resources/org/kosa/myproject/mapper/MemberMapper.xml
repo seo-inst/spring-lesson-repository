@@ -3,5 +3,27 @@
 <mapper namespace="org.kosa.myproject.mapper.MemberMapper">
 	<select id="getTotalMemberCount" resultType="int">
 		select count(*) from spring_member
+	</select>	
+	<insert id="register" parameterType="org.kosa.myproject.domain.Member">
+		insert into spring_member(id,password,name,address)
+		values(#{id},#{password},#{name},#{address})
+	</insert>
+	<select id="findMemberById" parameterType="string" resultType="org.kosa.myproject.domain.Member" >
+		select id,password,name,address from spring_member where id=#{id}
+	</select>
+	<select id="findAllMemberList" resultType="org.kosa.myproject.domain.Member">
+		select id,password,name,address from spring_member
 	</select>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+

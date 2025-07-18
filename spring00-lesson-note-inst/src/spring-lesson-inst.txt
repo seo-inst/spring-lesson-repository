@@ -229,8 +229,21 @@
       DEBUG
       TRACE   	  
    	  					
+   **MyBatis Framework**
+   Persistence Layer Framework (영속성 계층 프레임워크) 로서 SQL Mapper Framework 
+   																							  ( SQL 중심 ) 
+   데이터베이스 연동 로직을 효율적으로 개발 할 수 있도록 지원하는 SQL Mapper Framework 
    
+   spring mybatis 의존성 관리 :  maven 의 pom.xml 
+   spring mybatis  설정 : application.properties		
    
+   Java 									XML Mapper								Database 
+   <<interface>>             
+   MemberMapper    			   MemberMapper.xml 					MySql 													  
+   						
+   						
+   		spring container가 
+   		Proxy  를 생성해 실행되는 구조 				
    
    
            
