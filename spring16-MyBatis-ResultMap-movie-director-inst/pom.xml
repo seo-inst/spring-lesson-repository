@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.kosa</groupId>
-	<artifactId>spring15-MyBatis-DynamicSQL-product</artifactId>
+	<artifactId>spring16-MyBatis-ResultMap-movie-director-inst</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring15-MyBatis-product</name>
+	<name>spring16-MyBatis-ResultMap-movie-director-inst</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
