@@ -38,8 +38,49 @@
 		where price between #{minPrice}  and #{maxPrice}
 	</select>
 	<!-- 
-				다음주에 계속 
+				MyBatis Dynamic SQL Study
+				
+				parameterType : 타입 추론하여 생략 가능 ( map , vo / dto / domain , string 등 생략가능)
+										  만약 컬렉션 계열은 타입 명시 것도 좋다 
+										  
+				searchKeyword1.put("maker", "삼성");						  
 	 -->
+	 <select id="findProductsDynamic" resultType="org.kosa.myproject.domain.Product">
+	 	SELECT <include refid="productColumns"></include> 
+	 	FROM  spring_product
+	 	<where>
+	 	<if test="maker != null and maker !=''">
+	 		AND maker = #{maker}
+	 	</if>
+	 	<if test="productName != null and productName !=''">
+	 		AND product_name LIKE   CONCAT('%' , #{productName}, '%') 
+	 	</if>	 	
+	 	<if test="minPrice != null and maxPrice !=null and minPrice !='' and maxPrice!=''">
+	 	    AND price BETWEEN #{minPrice} AND #{maxPrice}
+	 	</if>
+	 	<if test="searchPrice != null and searchPrice !=''">	 		
+	 	<![CDATA[
+	 	    AND price <= #{searchPrice}
+	 	]]></if>
+	 	</where>	 	  
+	 	ORDER BY created_at DESC
+	 </select>
+	 <!--  Dynamic SQL  update 연습 -->
+	 <update id="updateProductDynamic">
+	 	UPDATE spring_product
+	 	<set>
+	 		<if test="maker!=null and maker!=''">
+	 			maker = #{maker},
+	 		</if>
+	 		<if test="productName!=null and productName!=''">
+	 			product_name=#{productName},
+	 		</if>
+	 		<if test="price!=null and price!=''">
+	 			price=#{price},
+	 		</if>
+	 	</set>
+	 	WHERE product_id = #{productId}
+	 </update>
 </mapper>
 
 
