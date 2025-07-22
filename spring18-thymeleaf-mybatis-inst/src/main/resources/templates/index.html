@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>home</title>
+</head>
+<body>
+<h1 th:text="${message}">SpringBoot Thymeleaf MyBatis 연동</h1>
+<a href="/member/member-totalcount">총 회원수</a>
+ <!--/* 
+ 		table : spring_member 
+ 		mapper : src/main/resources/org/kosa/myproject/mapper/MemberMapper.xml
+ 					  package name :  org.kosa.myproject.mapper.MemberMapper interface
+ 					  						   getTotalMemberCount() : int 
+ 		controller : org.kosa.myproject.controller.MemberController
+ 						   url-pattern :  /member/member-totalcount
+ 						   getTotalMemberCount() : String 			  						   		
+ 		view : templates/member/total-count.html 
+ 				  총 회원수 몇 명 			  					
+ 					  					
+ 		이 부분은	thymeleaf 주석입니다  
+  */-->
+</body>
+</html>
+
+
+
+
+
