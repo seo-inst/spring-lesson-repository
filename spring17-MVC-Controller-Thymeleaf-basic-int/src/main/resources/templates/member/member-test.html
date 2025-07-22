@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>회원 페이지</title>
+</head>
+<body bgcolor="yellow">
+	<h1>회원 페이지</h1>
+	<h2>1. 회원검색 테스트</h2>
+	<form action="/member/find-by-id" method="get">
+		<input type="text" name="memberId" required="required" placeholder="아이디">
+		<button type="submit">회원 정보 조회(Get)</button>
+	</form>
+	<h2>2. 회원검색 테스트</h2>
+	<form action="/member/find-by-id2" method="get">
+		<input type="text" name="memId" required="required" placeholder="아이디">
+		<button type="submit">회원 정보 조회2(Get)</button>
+	</form>
+	<!-- 
+			MemberController 에 적절한 컨트롤러 메서드를 정의하고 
+			응답은  회원아이디가  java 문자열이면  member/findbyid-ok.html 에서 응답 ( lime 색 )  
+			java 가 아니면 member/findbyid-fail.html 에서 응답 ( green 색) 
+	 -->
+	 <h2>3. 파라미터 테스트</h2>
+	<form action="/member/param-test" method="get">
+		<input type="text" name="nick" required="required" placeholder="닉네임">
+		<input type="number" name="age" required="required" placeholder="나이">
+		<button type="submit">파라미터 테스트(Get)</button>
+	</form>
+	<!-- 
+			MemberController method 명 : paramTest( 매개변수는 name 에 매칭되도록 선언 ) 
+			age 가 18세 초과하면 Model 에  type 이라는 name으로 성인이라고 할당 
+			18세 이하이면 Model에 type이라는 name 에 미성년  이라고 할당 
+			view name :  templates 아래의 member 아래에 param-result 로 응답한다 
+			
+			param-result.html 에서는 몇 세  성인 또는 미성년이라고 보여주면 된다 
+	 -->
+	  <h2>4. member object parameter  테스트</h2>
+	<form action="/member/register" method="post">
+		<input type="text" name="id" required="required" placeholder="아이디"><br>
+		<input type="password" name="password" required="required" placeholder="패스워드"><br>
+		<input type="text" name="name" required="required" placeholder="이름"><br>
+		<input type="text" name="address" required="required" placeholder="주소"><br>
+		<button type="submit">회원등록테스트(Post)</button>
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

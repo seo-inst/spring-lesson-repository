@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>param test result</title>
+</head>
+<body>
+	<h2>파라미터 테스트 결과</h2>
+	<span th:text="${param.age}">나이</span>세   <span th:text="${type}">성인 또는 미성년</span>
+	<br><br>
+	<p><span th:text="'나이'+${param.age}+'세'">나이 몇 세</span></p>
+	<p><span th:text="|나이 ${param.age} 세|">나이 몇 세</span></p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

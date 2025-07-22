@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>findbyid-result</title>
+</head>
+<body bgcolor="orange">
+<h1>회원 검색 결과 화면</h1>
+<p th:text="${member}">회원 정보가 여기에 표시됩니다</p>
+<br><br>
+<h2>회원 정보를 속성별로 확인</h2>
+<ul>
+<li>
+<strong>회원아이디:</strong> <span th:text="${member.id}">id</span>
+</li>
+<li>
+<strong>회원명:</strong> <span th:text="${member.name}">name</span>
+</li>
+</ul>
+</body>
+</html>
+
+
+
+

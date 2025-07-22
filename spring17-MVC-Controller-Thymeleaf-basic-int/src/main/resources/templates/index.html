@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- 
+		xmlns:th="http://www.thymeleaf.org" : 타임리프 선언 
+		이 선언으로 th: 으로 시작되는 타임리프 속성들을 사용할 수 있음 
+ -->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>홈</title>
+</head>
+<body>
+<h1>홈</h1>
+<!-- 
+		Spring Controller 에서 Model 객체를 이용해  result 라는 name에 특정 정보를 저장 
+		타임 리프가 ${result} 를 찾아서 특정 정보로 치환 
+		HTML 요소의 내용이 서버 데이터로 교환 
+ -->
+<p th:text="${result}">모델 연동 결과가 여기에 표시됩니다</p> <br><br>
+<a href="/member/member-test">회원 테스트 페이지로 이동</a>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
