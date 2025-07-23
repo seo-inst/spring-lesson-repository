@@ -20,6 +20,49 @@
  					  					
  		이 부분은	thymeleaf 주석입니다  
   */-->
+  <br><br>
+  <a href="/hello">MyTestController test1 : Thymeleaf Template Engine Study</a><br><br>
+  <a href="/paramTest?customerId=springKing&customerAge=22">MyTestController test2</a><br><br>
+  <!--/* 
+  			step2
+  			고객 나이가 18세 초과하면 
+  			result2 html 에서  p tag 추가해서  성인 22세  또는 미성년 14세 
+  			컨트롤러에서 Model 을 이용해 정보를 공유 ( 성인 또는 미성년 )  
+  			
+  			step1
+  			MyTestController paramTest 메서드를 정의 
+  			매개변수 적절히 받아서  sysout() ==> springking
+  			templates 아래에 result2 html 을 만들어서  
+  			p  태그에 매개변수 정보를 출력 
+  			
+  			아래 폼은 컨트롤러에서 배열 타입으로 매개변수가 처리되는 지 확인하고 
+  			리다이렉트 방식으로 처리해서 응답하는 연습 
+   */-->
+  <form method="post" action="/paramTest2">
+  <input type="checkbox" name="menu" value="교촌치킨">교촌치킨<br>
+  <input type="checkbox" name="menu" value="충만치킨">충만치킨<br>
+  <input type="checkbox" name="menu" value="깐부치킨">깐부치킨<br>
+  <button type="submit">주문</button>
+  </form>
+  <br><br>
+  <!--/* 
+  			아래는  result4 에서 thymeleaf 방식의 loop  를 테스트하기 위한 예제 
+   */-->
+    <form method="post" action="/paramTest3">
+  <input type="checkbox" name="menu" value="교촌치킨">교촌치킨<br>
+  <input type="checkbox" name="menu" value="충만치킨">충만치킨<br>
+  <input type="checkbox" name="menu" value="깐부치킨">깐부치킨<br>
+  <button type="submit">주문</button>
+  </form>
+  <br><br>
+  <a href="/customer-list">고객 명단</a>
+  
+  
+  <!--/* 
+  			타임리프 주석 
+  			정적 자원 :  image , css, js  등은  src/main/resources/static 에 배치한다
+   */-->
+  <img src="/images/thymeleaf.png">
 </body>
 </html>
 
