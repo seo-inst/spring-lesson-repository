@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>session study</title>
+</head>
+<body>
+<h3>result7 session study</h3>
+<!--/* 세션 내의 로그인한 인증 정보가 있으면    */-->
+<th:block th:if="${session.customer!=null}">
+<span th:text="${session.customer.name}">고객명</span>  로그인 상태 
+</th:block>
+</body>
+</html>
+
+
+
+
+
+

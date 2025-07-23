@@ -56,8 +56,26 @@
   </form>
   <br><br>
   <a href="/customer-list">고객 명단</a>
-  
-  
+  <br><br>
+  <!--/*     Customer has a Car : 고객 정보에 자동차 정보까지 포함해 전달    */-->
+  <form action="/has-a-test" method="post">
+  <input type="text" name="id" required="required" placeholder="아이디"><br>
+  <input type="text" name="name" required="required" placeholder="이름"><br>
+  <input type="text" name="address" required="required" placeholder="주소"><br>
+  <input type="text" name="car.model" required="required" placeholder="차모델"><br>
+  <input type="number" name="car.price" required="required" placeholder="차가격"><br>
+  <button type="submit">등록</button>
+  </form>  
+   <br><br>
+   <!-- 컨트롤러 매개변수로 세션을 받도록 하고 테스트    -->
+  <a href="/sessionTest0">세션테스트0</a>
+  <br><br>
+   <!-- 컨트롤러 매개변수로 세션을 받도록 하고 customer 인증정보를 세션에 저장하고 테스트    -->
+  <a href="/sessionTest1">세션테스트1</a>
+  <br><br>
+   <!-- 컨트롤러 매개변수로 request를 받도록 하고 
+   		 세션의 존재 유무와 인증 정보 유무를 확인   -->
+  <a href="/sessionTest2">세션테스트2</a>
   <!--/* 
   			타임리프 주석 
   			정적 자원 :  image , css, js  등은  src/main/resources/static 에 배치한다

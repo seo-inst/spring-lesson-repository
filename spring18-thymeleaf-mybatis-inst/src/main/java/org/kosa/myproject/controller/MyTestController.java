@@ -9,6 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class MyTestController {
 	@GetMapping("/hello") // client가 get 방식으로 요청시 찾는 url pattern 지정 
@@ -65,7 +68,65 @@ public class MyTestController {
 		model.addAttribute("customerList", list);
 		return "result5";
 	}	
+	@PostMapping("/has-a-test")
+	public String hasATest(Customer customer,Model model) {// HandlerAdapter 가 만들어서 준다 
+		//System.out.println(customer);
+		model.addAttribute("customer", customer);
+		return "result6";
+	}
+	// 스프링 컨트롤러의 메서드 매개변수로 세션을 받는 경우 
+	// request.getSession() 과 동일 :  세션이 없으면 새로 생성, 있으면 기존 세션 리턴 
+	@GetMapping("/sessionTest0")
+	public String sessionTest0(HttpSession session) {
+		return "result7";
+	}	
+	// 스프링 컨트롤러의 메서드 매개변수로 세션을 받는 경우 
+	// request.getSession() 과 동일 :  세션이 없으면 새로 생성, 있으면 기존 세션 리턴 
+	@GetMapping("/sessionTest1")
+	public String sessionTest1(HttpSession session) {// HandlerAdapter 가 만들어서 준다 
+		session.setAttribute("customer", new Customer("java","손흥민","런던"));
+		return "result7";
+	}
+	@GetMapping("/sessionTest2")
+	public String sessionTest2(HttpServletRequest request,Model model) {
+		// request.getSession(false) :  기존 세션이 없으면 null 반환, 기존 세션이 있으면 기존 세션 반환
+		HttpSession session = request.getSession(false);
+		String checkMessage = null;
+		if(session == null) {
+			checkMessage="세션이 존재하지 않습니다";
+		}else if(session!=null&&session.getAttribute("customer")==null) {
+			checkMessage="인증 정보가 존재하지 않습니다";
+		}else if(session!=null&&session.getAttribute("customer")!=null) {
+			checkMessage="로그인 상태입니다";
+		}
+		model.addAttribute("checkMessage", checkMessage);
+		return "result7-2";
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
