@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>step02-form-object-expression</title>
+</head>
+<body>
+<a href="/" th:href="@{/}">Home</a><br><br>
+<form action="/update" method="post">
+<input th:value="${session.member.id}" type="text" name="id" placeholder="아이디" readonly="readonly" ><br>
+<input th:value="${session.member.password}" type="text" name="password" placeholder="패스워드" required="required" ><br>
+<input th:value="${session.member.name}"  type="text" name="name" placeholder="이름" required="required" ><br>
+<input th:value="${session.member.address}" type="text" name="address" placeholder="주소" required="required" ><br>
+<button>수정하기</button>
+</form>
+<!--/* 
+			th:object="${member}" 를 이용할 수도 있음 
+			*{member의 변수명}
+ */-->
+<br><br>
+<form action="update" method="post" th:object="${session.member}">
+<input type="text" name="id" placeholder="아이디" readonly="readonly" th:value="*{id}" ><br>
+<input type="text" name="password" placeholder="패스워드" required="required" th:value="*{password}" ><br>
+<input type="text" name="name" placeholder="이름" required="required" th:value="*{name}"><br>
+<input type="text" name="address" placeholder="주소" required="required" th:value="*{address}"><br>
+<button>수정하기</button>
+</form>
+</body>
+</html>
+
+
+
+
+
+

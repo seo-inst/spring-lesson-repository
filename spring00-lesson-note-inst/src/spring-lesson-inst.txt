@@ -13,8 +13,9 @@
  - MyBatis Framework 
  - SprigngMVC (Legacy)
  - SpringBoot Web 
- - JUnit 
- - Thymeleaf
+  - Thymeleaf / layout : thymeleaf dialect
+ -  JUnit ( TDD ) 
+ -  Transaction 
  - Ajax/JSON 
  - CSS Framework : Bootstrap 
  - Agile Scrum : Jira
@@ -245,8 +246,89 @@
    		spring container가 
    		Proxy  를 생성해 실행되는 구조 				
    
-   
+  **Spring MVC**
+  Java Web Application  을 효과적으로 설계, 개발 , 운영 할 수 있도록 기반을 제공 
+  기반 :  다양한 디자인(설계) 패턴 과 컴포넌트를 제공 
+  
+  Spring MVC 에 내장된 디자인 패턴 : MVC, FrontController, Factory, Command, Singleton Pattern 
+  
+  Spring MVC 요청과 응답까지의 실행 흐름 
+  client가 request 하면 DispatcherServlet 이 동작되고 실제 컨트롤러를 연결할 
+  HandlerMapping이 실제 요청을 처리할 컨트롤러 구현체를 연결하고 
+  HandlerAdapter 가 컨트롤러 메서드를 실행한다( 이 때 필요한 매개변수를 가공해 전달함 ) 
+  클라이언트에게 응답할 방식을 ViewResolver가 제공( jsp or thymeleaf or ajax response 등 )
+  하여 그에 따라 View 를 응답한다 
+  
+  Spring MVC 의 주요 컴포넌트 
+  DispatcherServlet : Front Controller 역할을 담당 - Spring 설정 로딩 - IOC/DI/AOP 등을 지원
+  HandlerMapping : 요청 처리할 컨트롤러를 연결 ( 실제 구현체 RequestMappingHandlerMapping ) 
+  HandlerAdapter : Controller를 실행하는 역할 , 컨트롤러 메서드에서 필요로 하는 데이터를 가공해 전달  
+  ModelAndView :   Model 연동 공유 정보 ( request.setAttribute(name,value )
+  							 View 정보 (  /member/ok  or  redirect:/result ) 
+  							 				   /src/main/resources/template/member/ok.html ==> viewResovler 가 처리 
+  ViewResolver : 클라이언트에게 응답할 방식을 지원 ( jsp or thymeleaf or ajax json 등의 방식을 지원 ) 
+  
+  HTTP Response Status Code :  200 ,404, 405 , 500  등 
+  
+ SpringMVC 의 주요 어노테이션 
+ @Controller : 컨트롤러 로직을 처리하는 클래스 
+ @RequestMapping : 요청 처리 서버 프로그램 url 과 controller  class or method 를 mapping  
+ 							    @GetMapping ,  @PostMapping ... 
+ @ResponseBody :  ajax 응답을 위한 어노테이션 , 필요한 데이터만 응답 
+ @RestController :  @ResponseBody + @Controller
+ 
+ POJO
+ 
+ **Thymeleaf**
+ SpringBoot 와 함께 동적 웹페이지 렌더링에 널리 사용되는 Java 템플릿 엔진 
+ HTML의 구조 상에서 개발 , 기존 HTML 을 변경하지 않고 개발하는 방식 ( Natural Template ) 	
+ 서버 실행 없이도 브라우저에서 웹화면을 볼 수 있다 -> 디자인 팀과 협업 유리 
+ Thymeleaf 와 유사한 자바 템플릿 엔진 - jsp(jstl) , freemarker ... 
+ 
+ jsp 의 구동방식 
+ 사용자 요청 - 서블릿 컨테이너 ( 웹컨테이너 ) - jsp - java 생성 - .class 컴파일 - 서블릿 실행 - html 응답 
+ 
+ thymeleaf 의 구동방식  
+ 사용자 요청 - 스프링 컨트롤러 - 템플릿 엔진 - (thymeleaf) html 파싱 , 데이터 할당binding - 클라이언트에게
+ 전달할  html 로 응답    
+ 			    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  							 				   
            
+   
+   
+   
+   
    
    
    
