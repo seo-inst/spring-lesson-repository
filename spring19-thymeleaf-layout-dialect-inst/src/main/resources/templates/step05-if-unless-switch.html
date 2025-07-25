@@ -12,50 +12,56 @@
 		
 		th:text 의 문자열 조합 : ' ' 으로 처리하거나 |   | 로 감싸주면 된다  
  */-->
-	
+	  <th:block th:if="${product.price<2000}">
 		<p>2000원 미만 가성비 맥주</p>
-		<span ></span>
-		<span ></span>
-
+		<span th:text="${product.name}"></span>
+		<span th:text="${product.price}"></span>
+      </th:block>
  <br><br>
- 
+ 		<th:block th:unless="${product.price<2000}">
 		<p>2000원 미만이 아닌 비싼 맥주</p>
-		<span ></span>
-		<span ></span>
+		<span th:text="${product.name}"></span>
+		<span th:text="${product.price}"></span>
+		</th:block>
 
-
+        <th:block th:if="${product.maker=='하이트진로'}">
 		<p>하이트진로 맥주</p>
 		<!--/* 
 				하나의 span 요소에 여러개의 변수 정보를 표현하고자 할 때 
 				아래는 name과 price 를 하나의 span 요소에 표현
 				여러 변수의 문자열을 합쳐서 표현할 때 양 옆에 |      | 로 감싸준다  
 		 */-->
-		<span >상품명 가격</span>		
-
+		<span th:text="|상품명 ${product.name}  가격 ${product.price} |">상품명 가격</span>		
+         </th:block>
+         
+        <th:block th:if="${product.maker!='하이트진로'}">
 		<p>하이트진로 제조사가 아닌 맥주</p>
 		<span th:text="${product.name}"></span>
 		<span th:text="${product.price}"></span>
-
- <br><br>
- <span ></span>
+		</th:block>
+ <br><br> 
  <!--/* 
  		삼항연산자  (조건식) ? 식1 : 식2 
  		if ~ then :  (if) ? (then)
  		if ~ then ~ else : (if) ? (then) : (else) 
   */-->
   <br><br>
-   삼항 연산자 테스트 1 <span ></span>
+   삼항 연산자 테스트 1 <span th:text="${product.price}<1500?${product.name}"></span>
   <br><br>
-   삼항 연산자 테스트 2 <span ></span>
+   삼항 연산자 테스트 2 <span th:text="${product.price}>2000? |비싼상품| : |가성비 상품|"></span>
   <br><br>
   thymeleaf switch case <br>
- 
+ <th:block th:switch="${size}">
+  		<th:block th:case="L">
   		<span>대</span>
-  
+  		</th:block>
+  		<th:block th:case="M">
   		<span>중</span>
-  
+  	    </th:block>
+  	    <th:block th:case="S">
   		<span>소</span>
-  	
+  		</th:block>
+  </th:block>	
 </body>
 </html>
 

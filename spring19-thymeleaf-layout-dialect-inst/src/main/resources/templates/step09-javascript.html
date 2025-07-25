@@ -17,9 +17,15 @@
 		javascript 상에서 thymeleaf 변수를 사용하기 
 		1. <script type="text/javascript" th:inline="javascript">
 		2. editor에서 error를 발생시키면  [[${변수}]]  를
-		 주석으로 감싸기 /* [[${변수}]] */ "로컬에서 실행시 값"
- */-->
- 
+		 주석으로 감싸기 /*[[${변수}]]*/ "로컬에서 실행시 값"
+      [[${param.name}]]
+  */-->
+<script type="text/javascript" th:inline="javascript">
+ 		let userName= /*[[${param.name}]]*/ "회원명";
+ 		alert(userName);
+ 		//alert("javascript test  [[${param.name}]]");
+ 		location.href="/";
+ </script> 
 </div>
 </body>
 </html>

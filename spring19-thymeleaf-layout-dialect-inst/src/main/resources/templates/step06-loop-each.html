@@ -11,9 +11,9 @@
 <title>step06-loop-each</title>
 </head>
 <body>
-
+<div class="container">
 <a href="/">Home</a><br><br>
-<table >
+<table class="table table-bordered">
     <thead>
       <tr>
         <th>NO</th>
@@ -31,16 +31,16 @@
     		count : 1부터 시작 
     		반복대상요소(member)명+"Stat".index or count 로 접근 
     */-->
-      <tr >
-        <td >count</td>
-        <td >id</td>
-        <td >name</td>
-        <td >address</td>
+      <tr th:each="member:${memberList}">
+        <td th:text="${memberStat.count}">count</td>
+        <td th:text="${member.id}">id</td>
+        <td th:text="${member.name}">name</td>
+        <td th:text="${member.address}">address</td>
       </tr>     
     </tbody>
   </table>
   <hr>
-  <table >
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>NO</th>
@@ -58,11 +58,11 @@
     		count : 1부터 시작 
     		반복대상요소(member)명+"Stat".index or count 로 접근 
     */-->
-      <tr >
-        <td >count</td>
-        <td >id</td>
-        <td>name</td>
-        <td >address</td>
+      <tr th:each="memberMap:${memberMapList}">
+        <td th:text="${memberMapStat.count}">count</td>
+        <td th:text="${memberMap.id}">id</td>
+        <td th:text="${memberMap.name}">name</td>
+        <td th:text="${memberMap.address}">address</td>
       </tr>     
     </tbody>
   </table>

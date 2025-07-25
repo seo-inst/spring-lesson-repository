@@ -11,12 +11,15 @@
 <title>step07 loop each lists</title>
 </head>
 <body>
-<div >
+<div class="container">
 <!--/*  thymeleaf comment   */-->
 <a href="/" th:href="@{/}">Home</a><br><br>
-<span>상품수</span>
+<!--/*
+			상품수 4 
+  */-->
+<span th:text="|상품수 ${productCount}|">상품수</span>
 <br><br>
-<table >
+<table class="table table-bordered">
 	<thead>
 		<tr>
 			<th>NO</th>
@@ -27,15 +30,16 @@
 			<th>GIFT</th>
 		</tr>
 	</thead>
-	<tbody><!--/*  GIFT TD 영역에 gift정보가 true 이면 사은품있음 false 이면 사은품없음으로 정보제공   */-->
-		<tr >
-			<td>count</td>
-			<td>id</td>
-			<td>name</td>
-			<td>maker</td>
-			<td>price</td>
-			<td>gift</td>
-		</tr>
+	<tbody><!--/*  GIFT TD 영역에 gift정보가 true 이면 
+	사은품있음 false 이면 사은품없음으로 정보제공   */-->
+		<tr th:each="product:${productList}">
+			<td th:text="${productStat.count}">count</td>
+			<td th:text="${product.productId}">id</td>
+			<td th:text="${product.name}">name</td>
+			<td th:text="${product.maker}">maker</td>
+			<td th:text="${product.price}">price</td>
+			<td th:text="${product.gift} ? |사은품 있음| : |사은품 없음|">gift</td>
+		</tr>  
 	</tbody>
 </table>
 </div>

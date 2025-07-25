@@ -16,16 +16,17 @@
 <a href="" >Home</a><br><br>
 pagination <br><br>
 <!--/*  1부터 10까지 숫자를 each 를 이용해 표현   */-->
-
-	<span >number</span>
-
+<th:block th:each="num : ${#numbers.sequence(1,10)}">
+	<span th:text="${num}">number</span>
+</th:block>
 <br><br>
 <!--/* 
 			controller에서 공유한 정보를 이용해 숫자를 표현 
  */-->
-
- 	<span >pageNo</span>
-
+<th:block th:each=
+"pageNo : ${#numbers.sequence(startPageNumber,endPageNumber)}">
+ 	<span th:text="${pageNo}">pageNo</span>
+</th:block>
 </div>
 </body>
 </html>

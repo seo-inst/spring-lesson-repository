@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/layout2}"
+>
+<head>
+	<title>simple layout main2</title>
+</head>
+<!--/* 
+		body tag 는 명시하지 않는다  layout.html 의 content fragment 영역에 삽입될 부분이기 때문 
+ */-->
+  <div layout:fragment="content">
+   <strong> simple layout main2 입니다 <span th:text="${message}">메세지</span></strong> 
+      <a href="" th:href="@{study11}">메인1로</a>
+  </div>
+</html>
