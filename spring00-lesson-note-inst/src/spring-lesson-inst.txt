@@ -343,7 +343,30 @@ AOP Proxy가 트랜잭션 시작, 커밋(commit), 롤백(rollback)과 같은 기
 														class PersonNotFoundException extends RuntimeException{}
  
  
- 
+  ***AJAX (Asynchronus Javascript And Xml)***  
+   			비동기 자바스크립트 통신 
+   			
+   			***페이지 리로딩 없는 부분 업데이트***
+   			요청에 대한 응답을 웹 페이지가 아니라 필요한 데이터(text or xml or json)로 응답받는다
+   			==> 필요데이터로 응답받아 화면에 부분 업데이트 		    
+      	 
+      	**비동기 요청 후 작업 지속**
+      	서버에 요청을 보낸 후 응답을 기다리는 동안에도 사용자는 페이지의 다른 버튼을 누르거나 
+      	화면을 스크롤하는 등 다른 작업을 계속할 수 있습니다. 이는 사용성 측면에서 매우 중요
+     	  
+   XML 과 JSON : Ajax 통신시 사용하는 데이터 형식
+				    	  구조화된 데이터 송수신을 위해 xml과 json을 이용한다 
+			          2005년 이후 초기에는 xml 을 이용했으나 최근에는  json 을 이용한다 
+			          
+   JSON : JavaScript Object Notation  
+            자바스크립트 객체 표기법
+            Ajax 통신시 구조화된 데이터를 송수신하는 용도로 사용된다 
+            경량이고 높은 생산성이 장점 
+            
+   Ajax 방식 세가지
+   XmlHttpRequest 
+   jQuery 
+   fetch      
  
  
  
