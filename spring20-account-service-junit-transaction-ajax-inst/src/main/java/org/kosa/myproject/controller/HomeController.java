@@ -13,6 +13,10 @@ public class HomeController {
 	public String ajaxStudy() {
 		return "ajax-study1";
 	}
+	@GetMapping("/ajax-study2")
+	public String ajaxStudy2() {
+		return "ajax-study2-jquery";// thymeleaf template view 
+	}
 }
 
 

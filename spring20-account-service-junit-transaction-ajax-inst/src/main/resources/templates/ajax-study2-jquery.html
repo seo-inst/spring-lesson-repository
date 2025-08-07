@@ -6,13 +6,14 @@
 <title>Ajax Basic</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container mt-5">
 		<form>
 			<input type="text" id="userId" required="required"
 				placeholder="고객아이디">
-			<button type="button" onclick="startAjax()">Ajax 테스트</button>			
+			<button type="button" id="jQueryAjaxBtn">jQuery Ajax 테스트</button>			
 		<br>
 		<br>
 		<textarea rows="10" cols="50" placeholder="본문내용"></textarea>
@@ -21,7 +22,7 @@
 		<!--/*    ajax 응답결과를 아래 div 에 보여줄 예정  */-->
 		<div id="result"></div>
 		<!--/*   Ajax(Javascript)    */-->
-		<script type="text/javascript" src="/js/ajax-study1.js"></script>
+		<script type="text/javascript" src="/js/ajax-study2-jquery-version.js"></script>
 	</div>
 </body>
 </html>

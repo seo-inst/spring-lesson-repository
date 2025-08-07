@@ -10,11 +10,16 @@ function startAjax(){
 	// 콜백 함수는 응답 완료되면 동작되는 함수를 지칭
 	// callback  의 사전적 의미는 작업 다 되면 나중에 불러줄께  
 	xhr.onreadystatechange=function(){// readystate 즉 상태 변화되면 실행됨
+		//alert(xhr.readyState);
 		// readyState 는 응답 완료   ,  status 가 200 대이면 정상 수행  
 		if(xhr.readyState === 4 && xhr.status>=200 && xhr.status < 300){
 			// responseText : 서버로부터 응답받은 정보 
-			alert("call back 서버로부터 받은 응답 :"+xhr.responseText);
-		}//if
+		//	alert("call back 서버로부터 받은 응답 :"+xhr.responseText);
+		// div id result 에 응답 정보를 표현 
+			document.getElementById("result").innerHTML=xhr.responseText;
+		}else if(xhr.readyState < 4){ // 응답완료 4 전까지 사용성을 높이기 위해 작업중임을 나타내는 이미지를 보여준다 
+			document.getElementById("result").innerHTML="<img src='/images/working.gif'>";
+		}
 	}//callback
 	let userId = document.getElementById("userId").value;
 	if(userId === ""){
@@ -23,6 +28,7 @@ function startAjax(){
 	}
 	xhr.open("get","/test-ajax1?userId="+userId);  // 서버에 비동기 요청을 위한 함수
 	xhr.send(); // 요청을 보낸다  
+	console.log("다른 작업들을 진행");
 }
 
 
