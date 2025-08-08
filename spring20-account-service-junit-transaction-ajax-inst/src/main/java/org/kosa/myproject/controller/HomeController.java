@@ -17,6 +17,14 @@ public class HomeController {
 	public String ajaxStudy2() {
 		return "ajax-study2-jquery";// thymeleaf template view 
 	}
+	@GetMapping("/ajax-study3")
+	public String ajaxStudy3() {
+		return "ajax-study3-fetch";// thymeleaf template view 
+	}
+	@GetMapping("/ajax-study4")
+	public String ajaxStudy4() {
+		return "ajax-study4-account-fetch-json";// thymeleaf template view 
+	}
 }
 
 

@@ -31,6 +31,18 @@ public class AjaxStudyController {
 		}
 		return "hello jQuery ajax "+userId;
 	}
+	@GetMapping("/test-ajax3")
+	@ResponseBody // ajax 응답을 위한 설정 
+	public String testAjax3(String userId) {
+		//System.out.println(userId);
+		try { 
+			// 서버 로직이 복잡하여 시간 소요가 많이 될 수 있다고 가정 
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {			
+			e.printStackTrace();
+		}
+		return "hello fetch ajax "+userId;
+	}
 }
 
 
